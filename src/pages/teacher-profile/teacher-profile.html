@@ -1,0 +1,193 @@
+<!--
+  Generated template for the TeacherProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar  color="primary">
+    <ion-title>Información</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cards-bg">
+	<ion-grid>
+	<ion-row>
+	<ion-col col-2></ion-col>
+	<ion-col>
+	    <ion-card>
+	    	<ion-grid>
+	    	<ion-row>
+	    	<ion-col col-4>
+	    	<!-- <ion-card-header>
+			    <p style="font-size: 20px; text-align: center;">Dr. Luis Jóse Garza Robledo</p>
+			 </ion-card-header> -->
+		    <img class="avatar" src="assets/imgs/PNGS/maestro.png" style="padding: 35px">
+			</ion-col>
+			<ion-col>
+			<ion-grid>
+			<!-- info personal -->
+		    <ion-card-content>
+		      <ion-card-title>
+		        Dr. Luis Jóse Garza Robledo
+		      </ion-card-title>
+		      <h6>L00917347</h6>
+		    </ion-card-content>
+		    <!-- botones -->
+		    <ion-row no-padding class="buttons">
+		      <ion-col>
+		        <button ion-button clear small color="primary" icon-start (click)="gotoChat()">
+		          <ion-icon name='chatbubbles' ></ion-icon>
+		          Mandar mensaje
+		        </button>
+		      </ion-col>
+		      <ion-col text-center>
+		        <button ion-button clear small color="primary" icon-start>
+		          <ion-icon name='call'></ion-icon>
+		          Llamar
+		        </button>
+		      </ion-col>
+		    </ion-row>
+		    <!-- lista de materias que imparte -->
+		    <ion-row no-padding>
+		    	<ion-list>
+					<ion-list-header>
+						Materias impartidas
+					</ion-list-header>
+					<ion-scroll class="yes-scroll" scrollY="true" style="height: 200px; width: 400px">
+						<ion-item>
+							Finanzas Gpo 1
+						</ion-item>
+						<ion-item>
+							Finanzas Gpo 2
+						</ion-item>
+						<ion-item>
+							Administración de costos y precios Gpo 3
+						</ion-item>
+						<ion-item>
+							Analisis de informacion financiera Gpo 4
+						</ion-item>
+					</ion-scroll>
+		  	 	</ion-list>
+			</ion-row>
+			</ion-grid>
+			</ion-col>
+			<ion-row align-items-center style="width: 1200px">
+			<ion-col col-12>
+			<!-- horario -->
+			<div style="padding: 20px">
+				<ion-list-header>
+				<p style="font-size: 30px; text-align: left;">Horario </p>
+				</ion-list-header>
+			<ion-row>
+				<ion-col></ion-col>
+				<ion-col>Lun</ion-col>
+				<ion-col>Mar</ion-col>
+				<ion-col>Mie</ion-col>
+				<ion-col>Jue</ion-col>
+				<ion-col>Vie</ion-col>
+				<ion-col>Sab</ion-col>
+				<ion-col>Dom</ion-col>
+			</ion-row>
+			<ion-row> <ion-col>05:00</ion-col> </ion-row>
+			<ion-row> <ion-col>06:00</ion-col> </ion-row>
+			<ion-row> <ion-col>07:00</ion-col> </ion-row>
+			<ion-row> <ion-col>08:00</ion-col> </ion-row>
+			<ion-row> <ion-col>09:00</ion-col> </ion-row>
+			<ion-row> <ion-col>10:00</ion-col> 
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+			<ion-row> <ion-col>11:00</ion-col> 
+				<ion-col class="available"></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+			<ion-row> <ion-col>12:00</ion-col> 
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+			<ion-row> <ion-col>13:00</ion-col> </ion-row>
+			<ion-row> <ion-col>14:00</ion-col> </ion-row>
+			<ion-row> <ion-col>15:00</ion-col> 
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+			<ion-row> <ion-col>16:00</ion-col> 
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+			<ion-row> <ion-col>17:00</ion-col> 
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+			<ion-row> <ion-col>18:00</ion-col> 
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+			<ion-row> <ion-col>19:00</ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col class="available"></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+			<ion-row> <ion-col>20:00</ion-col> </ion-row>
+			<ion-row> <ion-col>21:00</ion-col> </ion-row>
+			<ion-row> <ion-col>22:00</ion-col> </ion-row>
+			<ion-row> <ion-col>23:00</ion-col> </ion-row>
+			<ion-row> <ion-col>24:00</ion-col> </ion-row>
+			<ion-row> <ion-col>00:00</ion-col> </ion-row>
+			<ion-row> <ion-col>01:00</ion-col> </ion-row>
+			<ion-row> <ion-col>02:00</ion-col> </ion-row>
+			<ion-row> <ion-col>03:00</ion-col> </ion-row>
+			<ion-row> <ion-col>04:00</ion-col> </ion-row>	
+			</div>
+			</ion-col>
+			</ion-row>
+			</ion-row>
+			</ion-grid>
+	  	</ion-card>
+
+	</ion-col>
+	<ion-col col-2></ion-col>
+	</ion-row>
+	</ion-grid>
+
+</ion-content>

@@ -1,0 +1,26 @@
+page-register {
+	h1{
+		padding: 0px;
+		font-size: 70px;
+		text-align: center;
+		font-color: darkgray;
+	}
+	h3{
+		text-align: justify;
+	}
+	
+	.back {
+		background-color: darkblue;
+	}
+	.center{
+		background-color: white;
+		color: #222;
+	}
+
+	ion-grid {
+    	height: 90%;
+    }
+    ion-row {
+    	height: 100%;
+    }
+}

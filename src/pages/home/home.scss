@@ -1,0 +1,91 @@
+$icon-size: 50px;
+
+page-home {
+	
+	h3{
+		font-size: 20px;
+		text-align: left;
+		color: #FFF;
+	}
+
+	.list-avatar-page {
+	  ion-note {
+	    font-size: 12px;
+	    align-self: flex-start;
+	    margin-top: 14px;
+	 	}
+	}
+	ion-scroll {
+		/*height: 350px;*/
+		height: 36vh;
+	}
+
+
+	[noScroll] {
+	  overflow: hidden;
+	}
+
+	.no-scroll .scroll-content{
+     overflow: hidden;
+	}
+
+	.yes-scroll .scroll-content{
+     overflow: auto;
+	}
+
+
+		//#fdfcd4
+	.message-div p{
+		margin: 20px 25px;
+	}
+
+	.message-div .message{
+		display: inline-block;
+		padding: 5px 5px;
+		background: #fdfcd4;
+		margin: 10px 10px;
+		border-radius: 30px;
+	}
+
+	.message-div ion-col{
+		padding: 0px;
+		margin: 0px;
+		
+	}
+
+/*	.left-scroll+ion-scroll{
+		width: 300px;
+	}*/
+
+	.chat-input{
+		background-color:rgba(0, 0, 0, 0);
+	    border: none;
+	    outline:none;
+	    padding: 10px;
+	    margin-bottom: 2vh;
+	}
+
+	.avatar img{
+
+		cursor: pointer;
+		border-radius: 100%;
+		width: 50px; 
+		height: 50px;
+		margin: 0;
+		padding: 0;
+
+	}
+
+	.icons img{
+
+		width: 50px; 
+		height: 50px; 
+		background-color:rgba(0, 0, 0, 0); 
+		border-radius:100%;
+		margin-left: 10px;
+		margin-right: 10px;
+		cursor: pointer;
+
+	}
+	
+}

@@ -1,0 +1,866 @@
+<!-- splitplane
+  events or toggle menu
+ -->
+
+<ion-header>
+  
+
+</ion-header>
+
+<ion-content style="height: 100vh; " >  <!-- class="no-scroll" -->
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-navbar color="primary" style="height:10vh">
+    <ion-grid>
+      <ion-row align-items-center >
+        <ion-col col-lg-2 >
+          <img (click)="gotoHome()" style="cursor: pointer;  " src="assets/imgs/PNGs/logo.png"> 
+        </ion-col>
+        <ion-col col-lg-1 class="avatar">
+            <!-- <ion-title>  -->
+                <img (click)="gotoProfile()" src="assets/imgs/PNGS/alumna.png" style="border-radius: 100%; height: 70px; width: 70px;">
+            <!-- </ion-title> -->
+        </ion-col>
+        <ion-col><h3>Laura Gutiérrez Pérez</h3></ion-col>
+        <ion-col></ion-col>
+        <ion-col align-self-center col-md-3 col-12>
+
+          <ion-searchbar  (ionInput)="getItems($event)">
+            <ion-list>
+              <ion-item *ngFor="let item of items">
+                {{ item }}
+              </ion-item>
+            </ion-list></ion-searchbar>
+          
+
+          <!-- <ion-list>
+            <ion-item *ngFor="let item of items">
+              {{ item }}
+            </ion-item>
+          </ion-list>  -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+    </ion-row>
+
+    <ion-row no-padding>
+      <ion-col col-lg-4 col-12 class="avatar">
+        <!-- Primer sistema de ventanas -->
+          <!-- Segmento del primer sistema de ventanas -->
+          <div padding>
+            <ion-segment [(ngModel)]="FavRes">
+              <ion-segment-button value="Recientes">
+                Recientes
+              </ion-segment-button>
+              <ion-segment-button value="Favoritos">
+                Favoritos
+              </ion-segment-button>
+            </ion-segment>
+            <ion-input [(ngModel)]="FavRes" type="hidden" value="Recientes" width="0" size="0" height="0"></ion-input>
+            <ion-input [(ngModel)]="contact" type="hidden" value={{log}} width="0" size="0" height="0"></ion-input> 
+          </div>
+          <!-- Las opciones de los segmentos -->
+          <div [ngSwitch]="FavRes">  
+            <ion-list *ngSwitchCase="'Favoritos'">
+              <ion-scroll class="yes-scroll" scrollY="true" class="left-scroll">
+                <div class="Favoritos">
+                  <ion-list>
+                    <div (click)="contactMaestro()" style="cursor: pointer;">
+                    <ion-item>
+                      <ion-avatar item-start>
+                        <img  (click)="gotoTeacherProfile()" src="assets/imgs/PNGs/maestro.png">
+                      </ion-avatar>
+                      <h2>Dr. Luis Jóse Garza Robledo</h2>
+                      <p>Active.</p>
+                      <ion-note item-end>3:43 pm</ion-note>
+                    </ion-item>
+                    </div>
+                    <ion-item>
+                      <ion-avatar item-start>
+                        <img src="assets/imgs/PNGs/h2.png">
+                      </ion-avatar>
+                      <h2>Rafael Rodriguez Villa</h2>
+                      <p>Busy.</p>
+                      <ion-note item-end>2:00 pm</ion-note>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-avatar item-start>
+                        <img src="assets/imgs/PNGs/m2.png">
+                      </ion-avatar>
+                      <h2>Ing. Mirna Gurtierrez Leal</h2>
+                      <p>Active.</p>
+                      <ion-note item-end>5:30 pm</ion-note>
+                    </ion-item>
+                  </ion-list>
+                </div>
+              </ion-scroll>
+            </ion-list>   
+
+            <ion-list *ngSwitchCase="'Recientes'">
+              <ion-scroll class="yes-scroll" scrollY="true" class="left-scroll">
+                <div class="Recientes">
+                  <ion-list>
+                    <!-- <input #contacto type="text" [(ngModel)]="contact" value={{log}}>  -->
+                    <ion-item>
+                      <ion-avatar item-start>
+                        <img src="assets/imgs/PNGs/m1.png">
+                      </ion-avatar>
+                      <h2>María Gonzalez Gonzalez</h2>
+                      <p>Busy.</p>
+                      <ion-note item-end>5:30 pm</ion-note>
+                    </ion-item>
+
+                    <div (click)="contactMaestro()" style="cursor: pointer;">
+                    <ion-item>
+                      <ion-avatar item-start>
+                        <!-- <img (click)="gotoTeacherProfile()" src="assets/imgs/PNGs/maestro.png"> -->
+                        <img (click)="gotoTeacherProfile()" src="assets/imgs/PNGs/maestro.png">
+                      </ion-avatar>
+                      
+                      <h2 >Dr. Luis Jóse Garza Robledo</h2>
+                      <p >Active.</p>
+                      <ion-note item-end>3:43 pm</ion-note>
+                      
+                    </ion-item>
+                   </div>
+
+                   <div (click)="contactAlumno()" style="cursor: pointer;">
+                    <ion-item>
+                      <ion-avatar item-start>
+                        <img src="assets/imgs/PNGs/h1.png">
+                      </ion-avatar>
+                      <h2>Roberto Gomez Garza</h2>
+                      <p>Active.</p>
+                      <ion-note item-end>2:10 pm</ion-note>
+                    </ion-item>
+                    </div>
+
+                    <ion-item>
+                      <ion-avatar item-start>
+                        <img src="assets/imgs/PNGs/m3.png">
+                      </ion-avatar>
+                      <h2>Fernanda Gabriela Aguirre</h2>
+                      <p>Active.</p>
+                      <ion-note item-end>12:32 pm</ion-note>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-avatar item-start>
+                        <img src="assets/imgs/PNGs/profile.png">
+                      </ion-avatar>
+                      <h2>Dr. Roberto Villareal </h2>
+                      <p>Active.</p>
+                      <ion-note item-end>9:45 am</ion-note>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-avatar item-start>
+                        <img src="assets/imgs/PNGs/m4.png">
+                      </ion-avatar>
+                      <h2>Analuz Erendida Himenez</h2>
+                      <p>Active.</p>
+                      <ion-note item-end>9:45 am</ion-note>
+                    </ion-item>
+
+                  </ion-list>
+                </div>
+              </ion-scroll>
+            </ion-list>     
+          </div>
+
+        
+        <!--Segundo sistema de ventanas -->
+          <!-- Segmento del Segundo sistema de ventanas -->
+          <div no-padding>
+            <ion-segment [(ngModel)]="ClasGru">
+
+              <ion-segment-button value="Clases">
+                Clases
+              </ion-segment-button>
+              <ion-segment-button value="Grupos">
+                Grupos
+              </ion-segment-button>
+            </ion-segment>
+            <ion-input [(ngModel)]="ClasGru" type="hidden" value="Clases" width="0" size="0" height="0"></ion-input>
+          </div>
+          <!-- Las opciones de los segmentos -->
+          <div [ngSwitch]="ClasGru"> 
+
+            <ion-list *ngSwitchCase="'Clases'">
+              <ion-scroll class="yes-scroll" scrollY="true" class="left-scroll">
+                <div class="Clases">
+                  <ion-list>
+                      <div (click)="contactGrupo()" style="cursor: pointer;">
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/PNGs/group.png">
+                        </ion-avatar>
+                        <h2>Administración</h2>
+                        <p>Grupo 2.</p>                       
+                      </ion-item>
+                      </div>
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/PNGs/group.png">
+                        </ion-avatar>
+                        <h2>EVAP</h2>
+                        <p>Grupo 5.</p>         
+                      </ion-item>
+
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/PNGs/group.png">
+                        </ion-avatar>
+                        <h2>Ética</h2>
+                        <p>Grupo 22.</p>          
+                      </ion-item>  
+
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/PNGs/group.png">
+                        </ion-avatar>
+                        <h2>Finanzas</h2>
+                        <p>Grupo 7.</p>          
+                      </ion-item>  
+
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/PNGs/group.png">
+                        </ion-avatar>
+                        <h2>Probabilidad</h2>
+                        <p>Grupo 13.</p>          
+                      </ion-item> 
+
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/PNGs/group.png">
+                        </ion-avatar>
+                        <h2>Modelos cuantitativos y de optimización</h2>
+                        <p>Grupo 4.</p>          
+                      </ion-item>              
+
+                  </ion-list>
+                </div>
+              </ion-scroll>
+            </ion-list>   
+
+            <ion-list *ngSwitchCase="'Grupos'">
+              <ion-scroll class="yes-scroll" scrollY="true" class="left-scroll">
+                <div class="Grupos">
+                  <ion-list>
+
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/PNGs/group.png">
+                        </ion-avatar>
+                        <h2>Equipo Finanzas</h2>
+                        <p>Grupo 2.</p>                       
+                      </ion-item>
+
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/PNGs/group.png">
+                        </ion-avatar>
+                        <h2>Asesorias Probabilidad</h2>
+                        <p>Grupo 5.</p>         
+                      </ion-item>
+
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/PNGs/group.png">
+                        </ion-avatar>
+                        <h2>Equipo Ética</h2>
+                        <p>Grupo 3.</p>          
+                      </ion-item>
+
+                  </ion-list>
+                </div>
+              </ion-scroll>
+            </ion-list>     
+          </div>
+      </ion-col> 
+
+      <!-- Toolbar y FAB -->
+        <ion-col no-padding style="margin:0px; padding: 0px; height: 70vh">
+
+          <div [ngSwitch]="contact">
+          <!-- switch contact
+          =============================================================
+          .. -->
+          <div *ngSwitchCase="'Maestro'" >
+          <ion-fab top right >
+            <button ion-fab mini color="light" class="fab-button" style="width: 50px; height: 50px; margin:0px; margin-top:1vh; padding: 0px;"><ion-icon name="more"></ion-icon></button>
+            <ion-fab-list side="bottom">
+              <button ion-fab ><ion-icon name="add"></ion-icon></button>
+              <button ion-fab ><ion-icon name="add"></ion-icon></button>
+              <button ion-fab ><ion-icon name="add"></ion-icon></button>
+            </ion-fab-list>
+          </ion-fab>
+
+          <ion-toolbar no-padding  style="height: 9vh; border-radius: 15px; ">
+           <!--  <ion-buttons left class="icons">
+              <button ion-button round color="primary">
+                <img src="assets/imgs/PNGs/vllamada.png">
+              
+              </button>
+              <button ion-button round color="primary">
+                
+                <img src="assets/imgs/PNGs/llamada.png">
+              </button>
+            </ion-buttons> -->
+
+            <!-- <ion-buttons right>  -->
+              <ion-grid style=" background-color: #DDD;">
+
+
+                <ion-row align-items-center>
+
+                  <ion-col no-padding col-1 class="icons">
+                      <img src="assets/imgs/PNGs/vllamada.png">                      
+                  </ion-col>
+                  <ion-col no-padding col-1 class="icons">
+                      <img src="assets/imgs/PNGs/llamada.png">
+                  </ion-col >
+                  <ion-col col-3></ion-col>
+                  <!-- usuarios -->
+                  <ion-col class="avatar" col-auto>
+                    <!-- <button ion-button round> -->
+                    <img  (click)="gotoTeacherProfile()" src="assets/imgs/PNGs/maestro.png" >
+                    <!-- </button> -->
+                  </ion-col>
+                  <ion-col col-auto>
+                    <p>Dr. Luis José Garza Robledo</p>
+                  </ion-col>
+                  
+                  <ion-col col-2></ion-col>
+
+                </ion-row>
+              </ion-grid>
+
+            <ion-buttons right>
+             <!--  <button ion-fab>Button</button>-->             
+              
+            </ion-buttons>
+            <!-- </ion-buttons> -->
+
+          </ion-toolbar>
+
+        
+         <!--  The chat bubbles as a For list -->
+<!--             <ion-list>
+            <ion-item *ngFor="let item of ">
+              
+            </ion-item> 
+          </ion-list>  -->
+        <ion-grid no-padding style="margin:0px; padding: 0px; height: 70vh">
+        <ion-row nowrap>
+          <ion-col class="message-div" style="margin:0px; padding: 0px; height: 70vh">
+          <ion-scroll class="yes-scroll" scrollY="true" style="width:100%; height:100%">
+            <!-- <ion-item color="gray" style="height:1000px"> -->
+            <ion-row nowrap>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6 ></ion-col>
+              <ion-col justify-content-end class="message" >
+                <div >
+                <p >NOT Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img  (click)="gotoTeacherProfile()" src="assets/imgs/PNGs/maestro.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+
+            </ion-row>
+
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img (click)="gotoTeacherProfile()" src="assets/imgs/PNGs/maestro.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+
+            </ion-row>
+
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img (click)="gotoTeacherProfile()" src="assets/imgs/PNGs/maestro.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+            </ion-row>
+            <!-- </ion-item>  -->
+          </ion-scroll> 
+
+          </ion-col>
+        </ion-row> 
+      </ion-grid>
+
+       <!-- <ion-footer>
+          <ion-toolbar>
+            <ion-title>Footer</ion-title>
+          </ion-toolbar>
+        </ion-footer> -->
+
+        <ion-grid  style="background-color: #CCC ; border-radius: 15px; padding: 10px; height: 9vh"> <!--  #028482 -->
+
+        <ion-row align-items-center class="message-div" class="icons" >
+          <ion-col col-1>
+              <img  src="assets/imgs/PNGs/img.png">     
+          </ion-col>
+          <ion-col col-1>
+            <img  src="assets/imgs/PNGs/clip.png">
+          </ion-col>
+          <ion-col col-1></ion-col>
+
+          <ion-col justify-content-center align-items-center class="message" style="background: #FFF; border-radius: 30px; height: 55px;">
+            
+            <ion-input type="text" placeholder="Escibe tu mensaje" class="chat-input"></ion-input>
+              
+          </ion-col>
+          <ion-col col-1>
+            <img  src="assets/imgs/PNGs/sendT.png">
+          </ion-col>
+          <ion-col col-1></ion-col>
+
+        </ion-row>
+        </ion-grid>
+
+
+        <!-- Fin del case Maestro -->
+        </div>
+
+       <!--  Inicio del case Alumno =====================================================================================================================-->
+        <div *ngSwitchCase="'Alumno'" >
+            <ion-fab top right >
+            <button ion-fab mini color="light" class="fab-button" style="width: 50px; height: 50px; margin:0px; margin-top:1vh; padding: 0px;"><ion-icon name="more"></ion-icon></button>
+            <ion-fab-list side="bottom">
+              <button ion-fab ><ion-icon name="add"></ion-icon></button>
+              <button ion-fab ><ion-icon name="add"></ion-icon></button>
+              <button ion-fab ><ion-icon name="add"></ion-icon></button>
+            </ion-fab-list>
+          </ion-fab>
+
+          <ion-toolbar no-padding  style="height: 9vh; border-radius: 15px;">
+           <!--  <ion-buttons left class="icons">
+              <button ion-button round color="primary">
+                <img src="assets/imgs/PNGs/vllamada.png">
+              
+              </button>
+              <button ion-button round color="primary">
+                
+                <img src="assets/imgs/PNGs/llamada.png">
+              </button>
+            </ion-buttons> -->
+
+            <!-- <ion-buttons right>  -->
+              <ion-grid style=" background-color: #DDD; ">
+
+
+                <ion-row align-items-center>
+
+                  <ion-col no-padding col-1 class="icons">
+                      <img src="assets/imgs/PNGs/vllamada.png">                      
+                  </ion-col>
+                  <ion-col no-padding col-1 class="icons">
+                      <img src="assets/imgs/PNGs/llamada.png">
+                  </ion-col >
+                  <ion-col col-3></ion-col>
+                  <!-- usuarios -->
+                  <ion-col class="avatar" col-auto>
+                    <!-- <button ion-button round> -->
+                    <img  src="assets/imgs/PNGs/h1.png" >
+
+                    <!-- </button> -->
+                  </ion-col>
+
+                  <ion-col col-auto>
+                    <p>Roberto Gomez Garza</p>
+                  </ion-col>
+
+                  <ion-col col-2></ion-col>
+
+                </ion-row>
+              </ion-grid>
+
+            <ion-buttons right>
+             <!--  <button ion-fab>Button</button>-->             
+              
+            </ion-buttons>
+            <!-- </ion-buttons> -->
+
+          </ion-toolbar>
+
+        
+         <!--  The chat bubbles as a For list -->
+<!--             <ion-list>
+            <ion-item *ngFor="let item of ">
+              
+            </ion-item> 
+          </ion-list>  -->
+        <ion-grid no-padding>
+        <ion-row nowrap>
+          <ion-col class="message-div" style="margin:0px; padding: 0px;height:70vh;">
+          <ion-scroll class="yes-scroll" scrollY="true" style="width:100%; height:70vh;">
+            <!-- <ion-item color="gray" style="height:1000px"> -->
+            <ion-row nowrap>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6 ></ion-col>
+              <ion-col justify-content-end class="message" >
+                <div >
+                <p >NOT Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img  src="assets/imgs/PNGs/h1.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+
+            </ion-row>
+
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img  src="assets/imgs/PNGs/h1.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum,  Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+
+            </ion-row>
+
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img  src="assets/imgs/PNGs/h1.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+            </ion-row>
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img  src="assets/imgs/PNGs/h1.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+            </ion-row>
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img  src="assets/imgs/PNGs/h1.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+            </ion-row>
+            <!-- </ion-item>  -->
+          </ion-scroll> 
+
+          </ion-col>
+        </ion-row> 
+      </ion-grid>
+
+       <!-- <ion-footer>
+          <ion-toolbar>
+            <ion-title>Footer</ion-title>
+          </ion-toolbar>
+        </ion-footer> -->
+
+        <ion-grid  style="background-color: #CCC ; border-radius: 15px; padding: 10px; height:9vh;"> <!--  #028482 -->
+
+        <ion-row align-items-center class="message-div" class="icons" >
+          <ion-col col-1>
+              <img  src="assets/imgs/PNGs/img.png">     
+          </ion-col>
+          <ion-col col-1>
+            <img  src="assets/imgs/PNGs/clip.png">
+          </ion-col>
+          <ion-col col-1></ion-col>
+
+          <ion-col justify-content-center align-items-center class="message" style="background: #FFF; border-radius: 30px; height: 55px;">
+            
+            <ion-input type="text" placeholder="Escibe tu mensaje" class="chat-input"></ion-input>
+              
+          </ion-col>
+          <ion-col col-1>
+            <img  src="assets/imgs/PNGs/sendT.png">
+          </ion-col>
+          <ion-col col-1></ion-col>
+
+        </ion-row>
+        </ion-grid>
+
+
+        <!-- Fin del case Alumno =================================================================================================================-->
+        </div>
+
+        <!-- Case Grupo =============================================================================================================================-->
+           <div *ngSwitchCase="'Grupo'" >
+            <ion-fab top right >
+            <button ion-fab mini color="light" class="fab-button" style="width: 50px; height: 50px; margin:0px; margin-top:1px; padding: 0px;"><ion-icon name="more"></ion-icon></button>
+            <ion-fab-list side="bottom">
+              <button ion-fab ><ion-icon name="add"></ion-icon></button>
+              <button ion-fab ><ion-icon name="add"></ion-icon></button>
+              <button ion-fab ><ion-icon name="add"></ion-icon></button>
+            </ion-fab-list>
+          </ion-fab>
+
+          <ion-toolbar no-padding  style=" height: 9vh; border-radius: 15px;">
+           <!--  <ion-buttons left class="icons">
+              <button ion-button round color="primary">
+                <img src="assets/imgs/PNGs/vllamada.png">
+              
+              </button>
+              <button ion-button round color="primary">
+                
+                <img src="assets/imgs/PNGs/llamada.png">
+              </button>
+            </ion-buttons> -->
+
+            <!-- <ion-buttons right>  -->
+              <ion-grid style=" background-color: #DDD;">
+
+
+                <ion-row align-items-center>
+
+                  <ion-col no-padding col-1 class="icons">
+                      <img src="assets/imgs/PNGs/vllamada.png">                      
+                  </ion-col>
+                  <ion-col no-padding col-1 class="icons">
+                      <img src="assets/imgs/PNGs/llamada.png">
+                  </ion-col >
+
+                  <ion-col no-padding col-2>
+                    <p style="font-size: 20px; text-align: left;"> Administración</p>
+                  </ion-col>
+                  <!-- usuarios -->
+                  <ion-col  class="avatar" col-auto>
+                    <!-- <button ion-button round> -->
+                    <img  src="assets/imgs/PNGs/m1.png" >
+                    <img  src="assets/imgs/PNGs/h1.png" >
+                    <img  src="assets/imgs/PNGs/profile.png" >
+                    <img  src="assets/imgs/PNGs/maestro.png" >
+                    <img  src="assets/imgs/PNGs/m2.png" >
+                    <img  src="assets/imgs/PNGs/h3.png" >
+                    <img  src="assets/imgs/PNGs/profile.png" >
+                    <img  src="assets/imgs/PNGs/h2.png" >
+                    <img  src="assets/imgs/PNGs/m3.png" >
+                    <img  src="assets/imgs/PNGs/profile.png" >
+                    <!-- </button> -->
+                  </ion-col>
+
+                  <ion-col>
+                    
+
+                  </ion-col>
+
+                </ion-row>
+              </ion-grid>
+
+            <ion-buttons right>
+             <!--  <button ion-fab>Button</button>-->             
+              
+            </ion-buttons>
+            <!-- </ion-buttons> -->
+
+          </ion-toolbar>
+
+        
+         <!--  The chat bubbles as a For list -->
+<!--             <ion-list>
+            <ion-item *ngFor="let item of ">
+              
+            </ion-item> 
+          </ion-list>  -->
+        <ion-grid no-padding>
+        <ion-row nowrap>
+          <ion-col class="message-div" style="margin:0px; padding: 0px; height: 70vh">
+          <ion-scroll class="yes-scroll" scrollY="true" style="width:100%; height:70vh;">
+            <!-- <ion-item color="gray" style="height:1000px"> -->
+            <ion-row nowrap>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6 ></ion-col>
+              <ion-col justify-content-end class="message" >
+                <div >
+                <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                </div>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img  src="assets/imgs/PNGs/profile.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+
+            </ion-row>
+
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img  src="assets/imgs/PNGs/m2.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+
+            </ion-row>
+
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img (click)="gotoTeacherProfile()" src="assets/imgs/PNGs/maestro.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum,  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+
+            </ion-row>
+
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-6></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </ion-col>
+
+            </ion-row>  
+            <ion-row>
+              <!-- <ion-col></ion-col>  -->
+              <ion-col col-auto no-padding class="icons"><img  src="assets/imgs/PNGs/h3.png" style="margin: 0px 0px;"></ion-col>
+              <ion-col justify-content-end class="message" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+              </ion-col>
+              <ion-col col-6></ion-col>
+            </ion-row>
+            <!-- </ion-item>  -->
+          </ion-scroll> 
+
+          </ion-col>
+        </ion-row> 
+      </ion-grid>
+
+       <!-- <ion-footer>
+          <ion-toolbar>
+            <ion-title>Footer</ion-title>
+          </ion-toolbar>
+        </ion-footer> -->
+
+<ion-grid  style="background-color: #CCC ; border-radius: 15px; padding: 10px; height:9vh;"> <!--  #028482 -->
+
+        <ion-row align-items-center class="message-div" class="icons" >
+          <ion-col col-1>
+              <img  src="assets/imgs/PNGs/img.png">     
+          </ion-col>
+          <ion-col col-1>
+            <img  src="assets/imgs/PNGs/clip.png">
+          </ion-col>
+          <ion-col col-1></ion-col>
+
+          <ion-col justify-content-center align-items-center class="message" style="background: #FFF; border-radius: 30px; height: 55px;">
+            
+            <ion-input type="text" placeholder="Escibe tu mensaje" class="chat-input"></ion-input>
+              
+          </ion-col>
+          <ion-col col-1>
+            <img  src="assets/imgs/PNGs/sendT.png">
+          </ion-col>
+          <ion-col col-1></ion-col>
+
+        </ion-row>
+        </ion-grid>
+        </div>
+        <!-- Fin del case Grupo -->
+
+        <div *ngSwitchCase="'Vacio'" >
+          <ion-grid style="height: 70vh">
+            <ion-row align-items-center style="height: 100%">
+              <ion-col col-4></ion-col>
+              <ion-col justify-content-center col-4 >
+                <img src="assets/imgs/PNGs/logo.png" style="width: 300px; height: 200px;">
+              </ion-col>
+              <ion-col col-4></ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <!-- Fin del  switch contact -->
+        </div>
+
+
+      </ion-col>
+
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

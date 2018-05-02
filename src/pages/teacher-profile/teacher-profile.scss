@@ -1,0 +1,21 @@
+page-teacher-profile {
+	ion-col {
+		color: primary; 
+	}
+	.available {
+		background: color($colors, 'blueG');
+	}
+
+	.avatar{
+		border-radius: 100%;
+	}
+
+	.buttons button{
+		width: 210px;
+		height: 70px;
+	}
+
+	.buttons ion-icon{
+		font-size: 60px;
+	}
+}
